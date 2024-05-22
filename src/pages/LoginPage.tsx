@@ -2,11 +2,11 @@ import { ReactNode, useState } from "react";
 import NormalLayout from "../layouts/NormalLayout";
 import { useNakamaContext } from "../NakamaContext";
 
-interface LoginPage {
+interface LoginPageProps {
   children?: ReactNode;
 }
 
-export default function LoginPage(props: LoginPage) {
+export default function LoginPage(props: LoginPageProps) {
   const ctx = useNakamaContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

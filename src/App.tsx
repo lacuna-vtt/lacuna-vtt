@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNakamaContext } from "./NakamaContext";
 import "./App.sass";
 import LoginPage from "./pages/LoginPage";
+import DebugPage from "./pages/DebugPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,7 +11,7 @@ function App() {
   return (
     <div>
       {ctx.isConnected ? <></> : <LoginPage />}
-      {ctx.isConnected ? <pre>{JSON.stringify(ctx, null, 2)}</pre> : <></>}
+      {ctx.isConnected ? <DebugPage /> : <></>}
     </div>
   );
 }
