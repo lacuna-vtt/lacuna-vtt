@@ -4,9 +4,9 @@ import App from "./App";
 import { NakamaProvider } from "./NakamaContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <NakamaProvider>
-      <App />
-    </NakamaProvider>
-  </React.StrictMode>
+  //<React.StrictMode>
+  <NakamaProvider>
+    <App />
+  </NakamaProvider>
+  //</React.StrictMode>
 );
