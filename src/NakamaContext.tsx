@@ -66,8 +66,11 @@ export const NakamaProvider: React.FC<NakamaProviderProps> = (
         console.info("Disconnected", evt);
         setIsConnected(false);
       };
-      setSocket(newSocket);
+      // TODO: what the fuck is this second argument?
+      const newSession = await newSocket.connect(session, false);
       setIsConnected(true);
+      setSession(newSession);
+      setSocket(newSocket);
     };
     createSocket().catch((e) => {
       console.error(e);
