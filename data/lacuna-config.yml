@@ -1,0 +1,17 @@
+# Configuration options: https://heroiclabs.com/docs/nakama/getting-started/configuration/
+
+name: lacuna
+data_dir: "./data/"
+
+logger:
+  stdout: false
+  level: "debug"
+  file: "/nakama/data/logfile.log"
+
+console:
+  port: 7351
+  username: "lacunadmin"
+  password: "iforgotsorry"
+
+session:
+  token_expiry_sec: 7200
