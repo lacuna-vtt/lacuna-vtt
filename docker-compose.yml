@@ -49,5 +49,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    restart: always
+    depends_on:
+      nakama:
+        condition: service_healthy
+    volumes:
+      - ./dist/:/usr/share/nginx/html
+    expose:
+      - "80"
+    ports:
+      - "80:80"
 volumes:
   data:
