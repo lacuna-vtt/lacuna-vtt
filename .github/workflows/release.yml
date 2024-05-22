@@ -9,7 +9,25 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21
+          cache: "npm"
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lacuna
+          path: |
+            docker-compose.yml
+            data
+            dist
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "lacuna.zip"
