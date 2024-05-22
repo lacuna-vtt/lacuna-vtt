@@ -15,3 +15,7 @@ The service is bundled as a docker-compose file. To start the service, run `dock
 The console port is 7351, so you can view the console at http://server:7351
 
 The `data/lacuna-config.yml` file contains the admin username and password, along with environment-specific stuff like client IDs for social signon.
+
+## Front End
+
+You can run `npm run dev` to start the dev server, or `npm build` to compile a production build.
