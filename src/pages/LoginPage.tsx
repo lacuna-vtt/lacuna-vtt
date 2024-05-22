@@ -12,10 +12,16 @@ export default function LoginPage(props: LoginPageProps) {
   const [password, setPassword] = useState<string>("");
   const login = () => {
     const doLogin = async () => {
-      const session = await ctx.client?.authenticateEmail(email, password);
-      ctx.setSession(session);
+      try {
+        const session = await ctx.client?.authenticateEmail(email, password);
+        ctx.setSession(session);
+      } catch (e: any) {
+        const msg = await e.json();
+        console.info("Unable to login", msg);
+        alert(`Unable to login: ${msg.message || "Unknown reason"}`);
+      }
     };
-    doLogin().catch((e) => alert("Unable to login"));
+    doLogin();
   };
 
   return (
