@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useNakamaContext } from "../NakamaContext";
 
 interface LacunaNavbarProps {
@@ -10,6 +10,12 @@ export default function LacunaNavbar(props: LacunaNavbarProps) {
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  useEffect(() => {
+    if (ctx.isConnected) {
+      setShowLoginModal(false);
+    }
+  }, [ctx.isConnected]);
 
   const login = () => {
     const doLogin = async () => {
