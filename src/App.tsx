@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { useNakamaContext } from "./NakamaContext";
-import "./App.sass";
-import LoginPage from "./pages/LoginPage";
-import DebugPage from "./pages/DebugPage";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.sass";
+import { NakamaProvider } from "./NakamaContext";
+import DebugPage from "./pages/DebugPage";
 
 const router = createBrowserRouter([
   {
@@ -14,13 +11,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [count, setCount] = useState(0);
-  const ctx = useNakamaContext();
-
   return (
-    <div>
+    <NakamaProvider>
       <RouterProvider router={router} />
-    </div>
+    </NakamaProvider>
   );
 }
 
