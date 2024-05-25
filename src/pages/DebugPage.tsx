@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import NormalLayout from "../components/NormalLayout";
 import { useNakamaContext } from "../NakamaContext";
 import NakamaLoginRequired from "../components/NakamaLoginRequired";
