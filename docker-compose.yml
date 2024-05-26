@@ -58,6 +58,7 @@ services:
         condition: service_healthy
     volumes:
       - ./dist/:/usr/share/nginx/html
+      - ./data/conf.d/:/etc/nginx/conf.d
     expose:
       - "80"
     ports:
