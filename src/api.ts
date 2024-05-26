@@ -4,7 +4,9 @@
 
 import { NakamaContextInterface } from "./NakamaContext";
 
-type LacunaGameId = string;
+export type LacunaGameId = string;
+
+export type LacunaDocumentId = string;
 
 /**
  * Connects the user to a game, by ID.
