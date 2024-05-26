@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useNakamaContext } from "../NakamaContext";
+import { Link } from "react-router-dom";
 
 interface LacunaNavbarProps {
   children?: ReactNode;
@@ -59,7 +60,12 @@ export default function LacunaNavbar(props: LacunaNavbarProps) {
 
         <div id="navbarBurgerMenu" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item">Home</a>
+            <Link className="navbar-item" to={"/"}>
+              Home
+            </Link>
+            <Link className="navbar-item" to={"/game/foobar"}>
+              Games
+            </Link>
           </div>
 
           <div className="navbar-end">
