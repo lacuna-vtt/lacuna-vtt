@@ -9,7 +9,7 @@ import { Client, Session, Socket } from "@heroiclabs/nakama-js";
 import { WebSocketAdapterPb } from "@heroiclabs/nakama-js-protobuf";
 
 // TODO: account and other objects?
-interface NakamaContextInterface {
+export interface NakamaContextInterface {
   client: Client | undefined;
   session: Session | undefined;
   setSession: React.Dispatch<React.SetStateAction<Session | undefined>>;
