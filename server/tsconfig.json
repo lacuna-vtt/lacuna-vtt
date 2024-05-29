@@ -1,0 +1,17 @@
+{
+    "files": [
+        "./server.ts"
+    ],
+    "compilerOptions": {
+      "target": "es5",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "typeRoots": [
+        "./node_modules"
+      ],      
+      "outFile": "../data/modules/index.js"
+    }
+  }
+  
