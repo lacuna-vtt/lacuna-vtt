@@ -18,7 +18,7 @@ export default function LobbyPage(props: LobbyPageProps) {
         const result = await ctx.client?.listMatches(
           ctx.session,
           100,
-          false,
+          true,
           undefined,
           0,
           999,
@@ -29,6 +29,7 @@ export default function LobbyPage(props: LobbyPageProps) {
         }
       }
     } catch (e) {
+      console.error(e);
       alert("Unable to fetch matches");
     }
   };
@@ -36,11 +37,14 @@ export default function LobbyPage(props: LobbyPageProps) {
   const createMatch = async () => {
     try {
       if (ctx.isConnected && ctx.socket) {
-        const matchName = prompt("Match name");
-        if (matchName) {
+        const payload = prompt("Payload");
+        if (payload) {
           console.log("Creating match");
-          const match = await ctx.socket.createMatch(matchName);
-          match.label = matchName;
+          const response = await ctx.socket.rpc(
+            "startlacunagame",
+            JSON.stringify({ payload })
+          );
+          console.dir(response);
           await fetchMatches();
         }
       }
@@ -70,10 +74,12 @@ export default function LobbyPage(props: LobbyPageProps) {
         </button>
         <table className="table">
           <thead>
-            <th>Match ID</th>
-            <th>Label</th>
-            <th>Presences</th>
-            <th>Action</th>
+            <tr>
+              <th>Match ID</th>
+              <th>Label</th>
+              <th>Presences</th>
+              <th>Action</th>
+            </tr>
           </thead>
           <tbody>
             {matches.map((match) => (
