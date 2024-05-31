@@ -8,10 +8,13 @@ const matchInit = function (
 
   const presences: { [userId: string]: nkruntime.Presence } = {};
 
+  // TODO: load initial game state from storage object
+  // TODO: set label to game name
+
   return {
     state: { presences },
     tickRate: 1,
-    label: "",
+    label: "TODO",
   };
 };
 
@@ -50,6 +53,10 @@ const matchJoin = function (
     state.presences[presence.userId] = presence;
     logger.debug("%q joined Lobby match", presence.userId);
   });
+
+  if (Object.keys(state.presences).length == 0) {
+    return null;
+  }
 
   return {
     state,
@@ -137,6 +144,16 @@ const matchSignal = function (
   };
 };
 
+function rpcStartLacunaGame(
+  context: nkruntime.Context,
+  logger: nkruntime.Logger,
+  nk: nkruntime.Nakama,
+  payload: string
+): string {
+  var matchId = nk.matchCreate("lacuna", JSON.parse(payload));
+  return JSON.stringify({ matchId });
+}
+
 let InitModule: nkruntime.InitModule = function (
   ctx: nkruntime.Context,
   logger: nkruntime.Logger,
@@ -152,4 +169,5 @@ let InitModule: nkruntime.InitModule = function (
     matchSignal,
     matchTerminate,
   });
+  initializer.registerRpc("startlacunagame", rpcStartLacunaGame);
 };
